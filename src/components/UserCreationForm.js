@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from 'react';
 
-const UserCreationForm = ({ token, selectedRole, onCreateSuccess }) => {
+const UserCreationForm = ({ token, Role, onCreateSuccess }) => {
   const [userDetails, setUserDetails] = useState({
     // Add default or empty values for all user details needed
     clientId: '',
@@ -29,12 +29,12 @@ const UserCreationForm = ({ token, selectedRole, onCreateSuccess }) => {
       const response = await axios.post("http://localhost:3001/createUser", {
         token,
         userDetails,
-        selectedRole,
+        Role,
       });
 
       if (onCreateSuccess) onCreateSuccess(response.data);
     } catch (err) {
-      console.log('Submitting User Details:', userDetails, 'Selected Role:', selectedRole);
+      console.log('Submitting User Details:', userDetails, 'Selected Role:', Role);
       setError("Failed to create user");
     }
   };

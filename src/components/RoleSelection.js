@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const RoleSelection = ({ token, onRoleSelect }) => {
   const [roles, setRoles] = useState([]);
-  const [selectedRole, setSelectedRole] = useState(null);
+  const [Role, setRole] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -30,12 +30,12 @@ const RoleSelection = ({ token, onRoleSelect }) => {
   }, [token]);
 
   const handleRoleSelect = () => {
-    onRoleSelect(selectedRole);
+    onRoleSelect(Role);
   };
 
   return (
     <div>
-      <select onChange={(e) => setSelectedRole(e.target.value)}>
+      <select onChange={(e) => setRole(e.target.value)}>
         <option value="">Select a Role</option>
         {roles.map((role) => (
           <option key={role.roleID} value={role.roleID}>
