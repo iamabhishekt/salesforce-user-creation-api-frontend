@@ -9,7 +9,7 @@ export default function Home() {
 
   return (
     <div>
-      <h1>Authenticate with Salesforce Marketing Cloud</h1>
+      <h1>Create Users in Salesforce Marketing Cloud using API</h1>
       <AuthenticationForm onTokenReceive={setToken} />
       {token && <RoleSelection token={token} onRoleSelect={setRole} />}
       {token && Role && (
