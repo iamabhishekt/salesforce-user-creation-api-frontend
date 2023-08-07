@@ -14,11 +14,15 @@ const AuthenticationForm = ({ onTokenReceive }) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3001/authenticate", {
-        client_id: clientId,
-        client_secret: clientSecret,
-        account_id: accountId,
-      });
+      // const response = await axios.post("http://localhost:3001/authenticate", {
+      const response = await axios.post(
+        "https://salesforce-user-creation-api-backend.onrender.com/authenticate",
+        {
+          client_id: clientId,
+          client_secret: clientSecret,
+          account_id: accountId,
+        }
+      );
 
       // Accessing the success message
       const successMessage = response.data.message;

@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const RoleSelection = ({ token, onRoleSelect }) => {
   const [roles, setRoles] = useState([]);
@@ -10,22 +9,26 @@ const RoleSelection = ({ token, onRoleSelect }) => {
   useEffect(() => {
     const fetchRoles = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/getRoles', {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        // const response = await axios.get('http://localhost:3001/getRoles', {
+        const response = await axios.get(
+          "https://salesforce-user-creation-api-backend.onrender.com/getRoles",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
 
         if (Array.isArray(response.data)) {
           setRoles(response.data);
         } else {
-          console.error('Response data is not an array:', response.data);
-          setError('Failed to fetch roles');
+          console.error("Response data is not an array:", response.data);
+          setError("Failed to fetch roles");
         }
       } catch (err) {
         console.error(err); // Log the actual error
-        setError('Failed to fetch roles');
+        setError("Failed to fetch roles");
       }
     };
-  
+
     if (token) fetchRoles();
   }, [token]);
 
