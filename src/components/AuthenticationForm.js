@@ -63,7 +63,7 @@ const AuthenticationForm = ({ onTokenReceive }) => {
         />
       </label>
       <button type="submit">Authenticate</button>
-      {token && <p>Token: {token}</p>}
+      {/* {token && <p>Token: {token}</p>} */}
       {successMessage && <p>{successMessage}</p>}
       {error && <p>Error: {error}</p>}
     </form>
